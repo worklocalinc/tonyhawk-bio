@@ -2,11 +2,17 @@ import requests
 import json
 import time
 import xml.etree.ElementTree as ET
+import os
+import sys
 
 # API Credentials
-NAMESILO_API_KEY = "af6273a7cd9f065f778df4e09"
-CLOUDFLARE_API_KEY = "QrhAZCVDEgztycifIx8tKlU03WmWxn6MVYrKdjcO"
-CLOUDFLARE_ACCOUNT_ID = "7ee53b77377bfa08a66d323326a64b76"
+NAMESILO_API_KEY = os.environ.get("NAMESILO_API_KEY")
+CLOUDFLARE_API_KEY = os.environ.get("CLOUDFLARE_API_TOKEN")
+CLOUDFLARE_ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "7ee53b77377bfa08a66d323326a64b76")
+
+if not all([NAMESILO_API_KEY, CLOUDFLARE_API_KEY]):
+    print("Please set NAMESILO_API_KEY and CLOUDFLARE_API_TOKEN environment variables")
+    sys.exit(1)
 
 DOMAIN = "tonyhawk.bio"
 

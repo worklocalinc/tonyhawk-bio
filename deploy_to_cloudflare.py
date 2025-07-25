@@ -4,7 +4,10 @@ import os
 import sys
 
 # Cloudflare API credentials
-CF_API_TOKEN = "QrhAZCVDEgztycifIx8tKlU03WmWxn6MVYrKdjcO"
+CF_API_TOKEN = os.environ.get("CLOUDFLARE_API_TOKEN")
+if not CF_API_TOKEN:
+    print("Please set CLOUDFLARE_API_TOKEN environment variable")
+    sys.exit(1)
 CF_ACCOUNT_ID = None  # We'll fetch this
 
 headers = {

@@ -6,9 +6,13 @@ from pathlib import Path
 import mimetypes
 
 # Cloudflare API credentials
-CF_API_TOKEN = "QrhAZCVDEgztycifIx8tKlU03WmWxn6MVYrKdjcO"
-CF_ACCOUNT_ID = "7ee53b77377bfa08a66d323326a64b76"
+CF_API_TOKEN = os.environ.get("CLOUDFLARE_API_TOKEN")
+CF_ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "7ee53b77377bfa08a66d323326a64b76")
 PROJECT_NAME = "tonyhawk-bio"
+
+if not CF_API_TOKEN:
+    print("Please set CLOUDFLARE_API_TOKEN environment variable")
+    sys.exit(1)
 
 headers = {
     "Authorization": f"Bearer {CF_API_TOKEN}",

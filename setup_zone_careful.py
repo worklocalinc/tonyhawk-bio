@@ -2,10 +2,15 @@ import requests
 import json
 import time
 import sys
+import os
 
 # Cloudflare Global API credentials
-CF_EMAIL = "james@worklocal.ca"
-CF_GLOBAL_API_KEY = "6e18d8fe941238df594989bad93dcc589260a"
+CF_EMAIL = os.environ.get("CLOUDFLARE_EMAIL", "james@worklocal.ca")
+CF_GLOBAL_API_KEY = os.environ.get("CLOUDFLARE_GLOBAL_API_KEY")
+
+if not CF_GLOBAL_API_KEY:
+    print("Please set CLOUDFLARE_GLOBAL_API_KEY environment variable")
+    sys.exit(1)
 
 DOMAIN = "tonyhawk.bio"
 
