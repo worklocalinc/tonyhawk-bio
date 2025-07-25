@@ -8,7 +8,7 @@ import sys
 # API Credentials
 NAMESILO_API_KEY = os.environ.get("NAMESILO_API_KEY")
 CLOUDFLARE_API_KEY = os.environ.get("CLOUDFLARE_API_TOKEN")
-CLOUDFLARE_ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "7ee53b77377bfa08a66d323326a64b76")
+CLOUDFLARE_ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")
 
 if not all([NAMESILO_API_KEY, CLOUDFLARE_API_KEY]):
     print("Please set NAMESILO_API_KEY and CLOUDFLARE_API_TOKEN environment variables")

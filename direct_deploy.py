@@ -2,12 +2,16 @@ import requests
 import json
 import base64
 import os
+import sys
 from pathlib import Path
 import mimetypes
 
 # Cloudflare API credentials
 CF_API_TOKEN = os.environ.get("CLOUDFLARE_API_TOKEN")
-CF_ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "7ee53b77377bfa08a66d323326a64b76")
+CF_ACCOUNT_ID = os.environ.get("CLOUDFLARE_ACCOUNT_ID")
+if not CF_ACCOUNT_ID:
+    print("Please set CLOUDFLARE_ACCOUNT_ID environment variable")
+    sys.exit(1)
 PROJECT_NAME = "tonyhawk-bio"
 
 if not CF_API_TOKEN:
